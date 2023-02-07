@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBarComponent from './component';
+import NavBarComponent, { NavBarComponentProps } from './component';
 
-function NavBar() {
-  return <NavBarComponent />;
+function NavBar(props: NavBarComponentProps) {
+  return <NavBarComponent {...props} />;
 }
 
 export default NavBar;

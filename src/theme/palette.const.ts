@@ -29,11 +29,11 @@ export const lightPalette: PaletteOptions = {
 
 export const darkPalette: PaletteOptions = {
   mode: 'dark',
-  common: { black: '#f5f1ed', white: '#353535' },
-  primary: { main: '#9f86c0', light: '#be95c4', dark: '#5e548e', contrastText: '#fff' },
-  secondary: { main: '#e5989b', light: '#ffb4a2', dark: '#b5838d', contrastText: '#fff' },
-  error: { main: '#d32f2f', light: '#ef5350', dark: '#c62828', contrastText: '#fff' },
+  common: { black: '#f5f1ed', white: '#2E4756' },
+  primary: { main: '#8EDCE6', light: '#8EDCE6', dark: '#8EDCE6', contrastText: '#fff' },
+  secondary: { main: '#FBB7C0', light: '#FBB7C0', dark: '#FBB7C0', contrastText: '#fff' },
+  error: { main: '#E01A4F', light: '#E01A4F', dark: '#E01A4F', contrastText: '#fff' },
   warning: { main: '#ed6c02', light: '#ff9800', dark: '#e65100', contrastText: '#fff' },
-  info: { main: '#0288d1', light: '#03a9f4', dark: '#01579b', contrastText: '#fff' },
-  success: { main: '#99d98c', light: '#b5e48c', dark: '#76c893', contrastText: '#fff' },
+  info: { main: '#8EDCE6', light: '#8EDCE6', dark: '#8EDCE6', contrastText: '#fff' },
+  success: { main: '#2a7f62', light: '#2a7f62', dark: '#2a7f62', contrastText: '#fff' },
 };

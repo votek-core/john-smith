@@ -1,9 +1,10 @@
-import React from 'react';
-import { Box, IconButton, Avatar, Image, Typography } from '~/components/core';
-import MenuImg from '~/icons/menu.webp';
-import MenuLightImg from '~/icons/menu.light.webp';
-import AvatarImg from '~/images/logo2.webp';
-import { styled, useAppTheme } from '~/theme/core';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Box, IconButton, Typography } from '~/components/core';
+import { styled } from '~/theme/core';
+import Lottie from 'react-lottie';
+import * as animationMenu from '~/lotties/menu.json';
+import SocialList from '~/containers/SocialList';
+import NavBar from '~/containers/NavBar';
 
 const PREFIX = 'TopBarComponent';
 const classes = {
@@ -18,58 +19,61 @@ const StyledBox = styled(Box)(({ theme }) => ({
   [`&.${classes.root}`]: {
     width: '100%',
     zIndex: 20,
-    position: 'relative',
+    position: 'fixed',
     backgroundColor: theme.palette.primary,
     marginBottom: 60,
   },
   [`&.${classes.content}`]: {
-    position: 'fixed',
-    height: 60,
-    padding: 10,
-    width: 'calc(100vw - 240px)',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    padding: '30px 10px 30px 10px',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    borderBottom: '1px solid #e5e9ec',
     justifyContent: 'space-between',
     color: theme.palette.common.black,
-    backgroundColor: theme.palette.common.white,
-  },
-  [`&.${classes.account}`]: {
-    display: 'flex',
-    alignItems: 'center',
   },
 }));
 
-const StyledTypography = styled(Typography)(() => ({
-  [`&.${classes.account_name}`]: {
-    fontSize: '1.1rem',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-}));
-
-const StyledIconButton = styled(IconButton)(() => ({
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
   [`&.${classes.within_icon}`]: {
     width: 54,
     height: 54,
     padding: 8,
+    ':hover': {
+      backgroundColor: 'rgba(255,255,255,0.08)',
+    },
   },
 }));
 
+const menuOptions = {
+  loop: false,
+  autoplay: true,
+  animationData: animationMenu,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
+
 function TopBarComponent() {
-  const { isDark } = useAppTheme();
+  const [showNavBar, setShowNavBar] = useState(false);
+
+  const segments = useMemo(() => (showNavBar ? [1, 70] : [70, 140]), [showNavBar]);
+  const handleShowNavBar = useCallback(() => {
+    setShowNavBar((pre) => !pre);
+  }, []);
+
   return (
     <StyledBox className={classes.root}>
       <StyledBox className={classes.content}>
-        <StyledIconButton className={classes.within_icon}>
-          <Image alt='menu' src={isDark ? MenuLightImg : MenuImg} height={36} />
+        <StyledIconButton className={classes.within_icon} onClick={handleShowNavBar}>
+          {/* <Image alt='menu' src={isDark ? MenuLightImg : MenuImg} height={36} /> */}
+          <Lottie segments={segments} options={menuOptions} height={42} width={42} isClickToPauseDisabled={true} />
         </StyledIconButton>
-        <StyledBox className={classes.account}>
-          <Avatar alt='avatar'>
-            <Image src={AvatarImg} alt={'avatar'} height={46} />
-          </Avatar>
-          <StyledTypography className={classes.account_name}>John Smith</StyledTypography>
-        </StyledBox>
+        <SocialList />
+
+        <NavBar show={showNavBar} />
       </StyledBox>
     </StyledBox>
   );

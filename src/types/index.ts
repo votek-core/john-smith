@@ -24,3 +24,10 @@ export type ThemeMode = 'dark' | 'light';
 export interface ThemeState {
   mode: ThemeMode;
 }
+
+export interface HomeScreenState {
+  currentScreen: number;
+}
+export interface UiState {
+  home: HomeScreenState;
+}

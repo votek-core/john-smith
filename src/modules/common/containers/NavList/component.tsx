@@ -7,7 +7,11 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { Link } from '~/components/route';
 import { styled } from '~/theme/core';
 
-const PREFIX = 'NavBarCoNavListComponentmponent';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
+import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
+
+const PREFIX = 'NavListComponent';
 const classes = {
   root: `${PREFIX}-root`,
 };
@@ -16,6 +20,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   ['&']: {
     flex: 1,
     color: theme.palette.common.black,
+    textTransform: 'uppercase',
   },
 }));
 
@@ -25,36 +30,34 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-function NavListComponent() {
+export interface NavListComponentProps {
+  setCurrentScreen?: (screen: number) => void;
+}
+
+function NavListComponent({ setCurrentScreen }: NavListComponentProps) {
   return (
     <StyledBox className={classes.root}>
       <MenuList>
-        <MenuItem>
-          <Link className='nav-list__link' href={'/profile'}>
-            <ListItemIcon>
-              <SendIcon fontSize='small' />
-            </ListItemIcon>
-            <StyledTypography variant='inherit'>Profile</StyledTypography>
-          </Link>
+        <MenuItem onClick={() => setCurrentScreen?.(0)}>
+          <ListItemIcon>
+            <PersonOutlineIcon fontSize='small' />
+          </ListItemIcon>
+          <StyledTypography variant='inherit'>Preview</StyledTypography>
         </MenuItem>
-        <MenuItem>
-          <Link className='nav-list__link' href={'/settings'}>
-            <ListItemIcon>
-              <PriorityHighIcon fontSize='small' />
-            </ListItemIcon>
-            <StyledTypography variant='inherit'>Settings</StyledTypography>
-          </Link>
+        <MenuItem onClick={() => setCurrentScreen?.(1)}>
+          <ListItemIcon>
+            <AssessmentOutlinedIcon fontSize='small' />
+          </ListItemIcon>
+          <StyledTypography variant='inherit'>Experiences</StyledTypography>
         </MenuItem>
 
-        <MenuItem>
-          <Link className='nav-list__link' href={'/notifications'}>
-            <ListItemIcon>
-              <DraftsIcon fontSize='small' />
-            </ListItemIcon>
-            <StyledTypography variant='inherit' noWrap>
-              Notification
-            </StyledTypography>
-          </Link>
+        <MenuItem onClick={() => setCurrentScreen?.(2)}>
+          <ListItemIcon>
+            <AutoAwesomeMosaicOutlinedIcon fontSize='small' />
+          </ListItemIcon>
+          <StyledTypography variant='inherit' noWrap>
+            Projects
+          </StyledTypography>
         </MenuItem>
       </MenuList>
     </StyledBox>

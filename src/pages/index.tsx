@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>My page title</title>
-        <meta name='description' content='This is SEOful web app' />
+        <title>Welcome to John Smith site</title>
+        <meta name='description' content='This is an example from my source code, please check more at https://github.com/rintran720' />
       </Head>
       <HomeComponent />
     </>

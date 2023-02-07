@@ -24,6 +24,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     color: theme.palette.common.black,
     backgroundColor: theme.palette.common.white,
     display: 'flex',
+    position: 'relative'
   },
   [`&.${classes.body}`]: {
     flex: 1,
@@ -45,7 +46,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeWithConfigProvider>
             <StyledBox className={classes.root}>
               <ErrorBoundary>
-                <NavBar />
                 <StyledBox className={classes.body}>
                   <TopBar />
                   <StyledBox className={classes.content}>{<Component {...pageProps} />}</StyledBox>

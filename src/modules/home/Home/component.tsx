@@ -1,8 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Button, Typography, Box } from '~/components/core';
 import { Link } from '~/components/route';
 import styles from './styles.module.scss';
 import { useAppTheme, styled } from '~/theme/core';
+import ReactPageScroller from 'react-page-scroller';
+import PreviewScreen from '../PreviewScreen';
+import ExperienceScreen from '../ExperienceScreen';
+import { useAppSelector } from '~/store/config';
 
 const PREFIX = 'HomeComponent';
 const classes = {
@@ -33,29 +37,25 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 export interface HomeComponentProps {
-  name?: string;
+  currentScreen?: number;
+  setCurrentScreen?: (screen: number) => void;
 }
 
-function HomeComponent({ name }: HomeComponentProps) {
-  const { mode, setAppTheme } = useAppTheme();
-  const changeThemeMode = useCallback(() => {
-    setAppTheme(mode == 'dark' ? 'light' : 'dark');
-  }, [mode, setAppTheme]);
+function HomeComponent({ currentScreen = 0, setCurrentScreen }: HomeComponentProps) {
+  const handlePageChange = (number: number) => {
+    setCurrentScreen?.(number);
+  };
 
   return (
     <Root className={classes.root}>
-      <StyledTypography className={classes.content}>Hi {name}, Click to change theme of website</StyledTypography>
-      <Button onClick={changeThemeMode}>{mode}</Button>
-      <StyledTypography>Click below button to navigate to other screen</StyledTypography>
-      <Link href='/profile'>
-        <Button color={'primary'}>Go to Profile</Button>
-      </Link>
-      <Link href='/settings'>
-        <Button color={'success'}>Go to Settings</Button>
-      </Link>
-      <Link href='/notifications'>
-        <Button color={'secondary'}>Go to Notification</Button>
-      </Link>
+      <ReactPageScroller
+        pageOnChange={handlePageChange}
+        customPageNumber={currentScreen}
+      >
+        <PreviewScreen />
+        <ExperienceScreen />
+        
+      </ReactPageScroller>
     </Root>
   );
 }

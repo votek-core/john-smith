@@ -3,15 +3,17 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AnyAction, CombinedState, combineReducers } from 'redux';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import { BookState, ThemeState } from '~/types';
+import { BookState, ThemeState, UiState } from '~/types';
 import { Storage } from '~/utils/localStorage';
 import { isProduction } from '../utils/env';
 import { bookReducers } from './book/book.slice';
 import { themeReducers } from './theme/theme.slice';
+import { uiReducers } from './ui/ui.slice';
 
 const rootReducer = combineReducers({
   book: bookReducers,
   theme: themeReducers,
+  ui: uiReducers,
 });
 
 const persistConfig = {
@@ -21,7 +23,7 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2,
 };
 
-export type CombinedAppState = CombinedState<{ book: BookState; theme: ThemeState }>;
+export type CombinedAppState = CombinedState<{ book: BookState; theme: ThemeState; ui: UiState }>;
 
 const persistedReducer = persistReducer<CombinedAppState, AnyAction>(persistConfig, rootReducer);
 

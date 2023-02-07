@@ -24,6 +24,8 @@ import {
   MenuList,
   Paper,
   MenuItem,
+  ListItemIcon,
+  Grow,
 } from '@mui/material';
 import AppHead from './AppHead';
 import { Button } from './Button';
@@ -60,4 +62,6 @@ export {
   MenuList,
   MenuItem,
   Image,
+  ListItemIcon,
+  Grow,
 };
