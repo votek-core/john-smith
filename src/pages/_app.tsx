@@ -5,9 +5,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '~/store/config';
 import { styled, ThemeWithConfigProvider } from '~/theme/core';
-import { AppHead, Box } from '~/components/core';
+import { Box } from '~/components/core';
 import ErrorBoundary from '~/containers/ErrorBoundary';
-import NavBar from '~/containers/NavBar';
 import TopBar from '~/containers/TopBar';
 
 const PREFIX = 'App';
@@ -24,7 +23,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     color: theme.palette.common.black,
     backgroundColor: theme.palette.common.white,
     display: 'flex',
-    position: 'relative'
+    position: 'relative',
   },
   [`&.${classes.body}`]: {
     flex: 1,
@@ -40,7 +39,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <AppHead />
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <ThemeWithConfigProvider>

@@ -30,6 +30,15 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+const StyledMenuItem = styled(MenuItem)(() => ({
+  ['&']: {
+    borderRadius: 5,
+  },
+  ['&:hover']: {
+    backgroundImage: 'linear-gradient(to right, #FBB7C0 , #E01A4F)',
+  },
+}));
+
 export interface NavListComponentProps {
   setCurrentScreen?: (screen: number) => void;
 }
@@ -38,27 +47,33 @@ function NavListComponent({ setCurrentScreen }: NavListComponentProps) {
   return (
     <StyledBox className={classes.root}>
       <MenuList>
-        <MenuItem onClick={() => setCurrentScreen?.(0)}>
+        <StyledMenuItem
+          id='nav-list-preview'
+          aria-label='preview'
+          onClick={() => {
+            setCurrentScreen?.(0);
+          }}
+        >
           <ListItemIcon>
             <PersonOutlineIcon fontSize='small' />
           </ListItemIcon>
           <StyledTypography variant='inherit'>Preview</StyledTypography>
-        </MenuItem>
-        <MenuItem onClick={() => setCurrentScreen?.(1)}>
+        </StyledMenuItem>
+        <StyledMenuItem id='nav-list-experience' aria-label='experience' onClick={() => setCurrentScreen?.(1)}>
           <ListItemIcon>
             <AssessmentOutlinedIcon fontSize='small' />
           </ListItemIcon>
           <StyledTypography variant='inherit'>Experiences</StyledTypography>
-        </MenuItem>
+        </StyledMenuItem>
 
-        <MenuItem onClick={() => setCurrentScreen?.(2)}>
+        <StyledMenuItem id='nav-list-project' aria-label='project' onClick={() => setCurrentScreen?.(2)}>
           <ListItemIcon>
             <AutoAwesomeMosaicOutlinedIcon fontSize='small' />
           </ListItemIcon>
           <StyledTypography variant='inherit' noWrap>
             Projects
           </StyledTypography>
-        </MenuItem>
+        </StyledMenuItem>
       </MenuList>
     </StyledBox>
   );

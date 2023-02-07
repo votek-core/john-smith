@@ -18,13 +18,13 @@ const Root = styled('div')(({ theme }) => ({
     flexDirection: 'column',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: theme.palette.success.main,
+    // backgroundColor: theme.palette.success.main,
   },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   ['&']: {
-    color: theme.palette.secondary.main,
+    // color: theme.palette.secondary.main,
   },
 }));
 
@@ -35,7 +35,13 @@ export interface ExperienceScreenComponentProps {
 function ExperienceScreenComponent(props: ExperienceScreenComponentProps) {
   return (
     <Root className={classes.root}>
-      <StyledTypography>Experience screen</StyledTypography>
+      <Box>
+        <Box>
+          <Box>Avatar</Box>
+          <Box>title</Box>
+        </Box>
+        <Box>Some info</Box>
+      </Box>
     </Root>
   );
 }

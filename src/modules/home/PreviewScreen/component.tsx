@@ -1,30 +1,51 @@
 import React, { useCallback } from 'react';
-import { Button, Typography, Box } from '~/components/core';
+import { Button, Typography, Box, Avatar, Image } from '~/components/core';
 import { useAppTheme, styled } from '~/theme/core';
+
+import Lottie from 'react-lottie';
+import * as avatarAnimation from '~/lotties/avatar.json';
 
 const PREFIX = 'PreviewScreenComponent';
 const classes = {
   root: `${PREFIX}-root`,
-  cta: `${PREFIX}-cta`,
-  content: `${PREFIX}-content`,
-  intro: `${PREFIX}-intro`,
+  user: `${PREFIX}-user`,
+  info_container: `${PREFIX}-info_container`,
 };
 
 const StyledBox = styled(Box)(({ theme }) => ({
   [`&.${classes.root}`]: {
     display: 'flex',
+    height: '100vh',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: theme.palette.common.white,
+  },
+  [`&.${classes.user}`]: {
+    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh',
-    backgroundColor: theme.palette.common.white,
+    width: '30vw',
+    marginTop: 100,
   },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   ['&']: {
-    color: theme.palette.warning.main,
+    fontWeight: theme.typography.fontWeightBold,
+    fontSize: 50,
+    marginTop: 10,
+    fontFamily: 'Itim',
   },
 }));
+
+const avatarOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: avatarAnimation,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
 
 export interface PreviewScreenComponentProps {
   name?: string;
@@ -33,7 +54,11 @@ export interface PreviewScreenComponentProps {
 function PreviewScreenComponent(props: PreviewScreenComponentProps) {
   return (
     <StyledBox className={classes.root}>
-      <StyledTypography>Preview screen</StyledTypography>
+      <StyledBox className={classes.user}>
+        <Lottie options={avatarOptions} height={'25%'} />
+        <StyledTypography>John Smith</StyledTypography>
+      </StyledBox>
+      <StyledBox className={classes.info_container}>Some info</StyledBox>
     </StyledBox>
   );
 }

@@ -27,13 +27,11 @@ import {
   ListItemIcon,
   Grow,
 } from '@mui/material';
-import AppHead from './AppHead';
 import { Button } from './Button';
 import Spinner from './Spinner';
 import Image from 'next/image';
 
 export {
-  AppHead,
   Avatar,
   Badge,
   ButtonGroup,

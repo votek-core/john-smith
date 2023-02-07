@@ -4,9 +4,10 @@ import { Link } from '~/components/route';
 import styles from './styles.module.scss';
 import { useAppTheme, styled } from '~/theme/core';
 import ReactPageScroller from 'react-page-scroller';
+
 import PreviewScreen from '../PreviewScreen';
 import ExperienceScreen from '../ExperienceScreen';
-import { useAppSelector } from '~/store/config';
+import ProjectScreen from '../ProjectScreen';
 
 const PREFIX = 'HomeComponent';
 const classes = {
@@ -48,13 +49,10 @@ function HomeComponent({ currentScreen = 0, setCurrentScreen }: HomeComponentPro
 
   return (
     <Root className={classes.root}>
-      <ReactPageScroller
-        pageOnChange={handlePageChange}
-        customPageNumber={currentScreen}
-      >
+      <ReactPageScroller pageOnChange={handlePageChange} customPageNumber={currentScreen}>
         <PreviewScreen />
         <ExperienceScreen />
-        
+        <ProjectScreen />
       </ReactPageScroller>
     </Root>
   );
