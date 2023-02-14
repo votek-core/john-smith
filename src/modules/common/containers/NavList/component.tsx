@@ -7,6 +7,7 @@ import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { Link } from '~/components/route';
 import { styled } from '~/theme/core';
 
+import AirplayOutlinedIcon from '@mui/icons-material/AirplayOutlined';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
@@ -55,18 +56,25 @@ function NavListComponent({ setCurrentScreen }: NavListComponentProps) {
           }}
         >
           <ListItemIcon>
-            <PersonOutlineIcon fontSize='small' />
+            <AirplayOutlinedIcon fontSize='small' />
           </ListItemIcon>
           <StyledTypography variant='inherit'>Preview</StyledTypography>
         </StyledMenuItem>
-        <StyledMenuItem id='nav-list-experience' aria-label='experience' onClick={() => setCurrentScreen?.(1)}>
+        <StyledMenuItem id='nav-list-profile' aria-label='profile' onClick={() => setCurrentScreen?.(1)}>
+          <ListItemIcon>
+            <PersonOutlineIcon fontSize='small' />
+          </ListItemIcon>
+          <StyledTypography variant='inherit'>Profile</StyledTypography>
+        </StyledMenuItem>
+
+        <StyledMenuItem id='nav-list-experience' aria-label='experience' onClick={() => setCurrentScreen?.(2)}>
           <ListItemIcon>
             <AssessmentOutlinedIcon fontSize='small' />
           </ListItemIcon>
           <StyledTypography variant='inherit'>Experiences</StyledTypography>
         </StyledMenuItem>
 
-        <StyledMenuItem id='nav-list-project' aria-label='project' onClick={() => setCurrentScreen?.(2)}>
+        <StyledMenuItem id='nav-list-project' aria-label='project' onClick={() => setCurrentScreen?.(3)}>
           <ListItemIcon>
             <AutoAwesomeMosaicOutlinedIcon fontSize='small' />
           </ListItemIcon>

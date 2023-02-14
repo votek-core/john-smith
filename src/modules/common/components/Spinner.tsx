@@ -1,10 +1,21 @@
 import React from 'react';
-import { CircularProgress } from './core';
+
+import Lottie from 'react-lottie';
+import * as loadingAnimation from '~/lotties/loading.json';
+
+const loadingOptions = {
+  loop: true,
+  autoplay: false,
+  animationData: loadingAnimation,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
 
 function Spinner() {
   return (
     <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <CircularProgress />
+      <Lottie options={loadingOptions} width={30} height={30} />
     </div>
   );
 }

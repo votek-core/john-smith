@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
-import PreviewScreenComponent from './component';
+import ProjectScreenComponent from './component';
 
-function PreviewScreen() {
-  return <PreviewScreenComponent />;
+function ProjectScreen() {
+  return <ProjectScreenComponent />;
 }
 
-export default PreviewScreen;
+export default ProjectScreen;

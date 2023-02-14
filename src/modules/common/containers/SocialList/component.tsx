@@ -35,6 +35,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const StyledMenuItem = styled(MenuItem)(() => ({
   ['&']: {
+    padding: '6px 0px 6px 0px',
     cursor: 'default',
   },
   ['&:hover']: {

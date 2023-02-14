@@ -16,6 +16,9 @@ const nextConfig = withPWA({
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
+  images: {
+    domains: ['localhost:8080', 'static.aisnogames.com', 'commondatastorage.googleapis.com'],
+  },
 });
 
 const ContentSecurityPolicy = `

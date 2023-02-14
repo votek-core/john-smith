@@ -53,6 +53,7 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Fondamento&family=Itim&family=Laila:wght@500&family=Shrikhand&display=swap'
             rel='stylesheet'
           />
+          <link rel='stylesheet' href='/css/video-react.css' />
 
           {/* <meta
             name='viewport'

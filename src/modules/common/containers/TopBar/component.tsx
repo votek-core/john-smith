@@ -40,7 +40,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   [`&.${classes.within_icon}`]: {
     width: 54,
     height: 54,
-    padding: 8,
+    padding: 6,
     ':hover': {
       backgroundColor: 'rgba(255,255,255,0.08)',
     },
@@ -68,11 +68,10 @@ function TopBarComponent() {
     <StyledBox className={classes.root}>
       <StyledBox className={classes.content}>
         <StyledIconButton className={classes.within_icon} onClick={handleShowNavBar}>
-          {/* <Image alt='menu' src={isDark ? MenuLightImg : MenuImg} height={36} /> */}
           <Lottie segments={segments} options={menuOptions} height={42} width={42} isClickToPauseDisabled={true} />
         </StyledIconButton>
+        <Box sx={{ m: 2 }} />
         <SocialList />
-
         <NavBar show={showNavBar} />
       </StyledBox>
     </StyledBox>

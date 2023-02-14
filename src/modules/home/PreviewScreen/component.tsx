@@ -1,15 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Button, Typography, Box, Avatar, Image } from '~/components/core';
 import { useAppTheme, styled } from '~/theme/core';
-
-import Lottie from 'react-lottie';
-import * as avatarAnimation from '~/lotties/avatar.json';
 
 const PREFIX = 'PreviewScreenComponent';
 const classes = {
   root: `${PREFIX}-root`,
-  user: `${PREFIX}-user`,
-  info_container: `${PREFIX}-info_container`,
+  present: `${PREFIX}-present`,
 };
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -18,34 +14,14 @@ const StyledBox = styled(Box)(({ theme }) => ({
     height: '100vh',
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: theme.palette.common.white,
   },
-  [`&.${classes.user}`]: {
+  [`&.${classes.present}`]: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    width: '30vw',
-    marginTop: 100,
+    justifyContent: 'center',
+    backgroundColor: 'blue',
   },
 }));
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  ['&']: {
-    fontWeight: theme.typography.fontWeightBold,
-    fontSize: 50,
-    marginTop: 10,
-    fontFamily: 'Itim',
-  },
-}));
-
-const avatarOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: avatarAnimation,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-};
 
 export interface PreviewScreenComponentProps {
   name?: string;
@@ -54,11 +30,11 @@ export interface PreviewScreenComponentProps {
 function PreviewScreenComponent(props: PreviewScreenComponentProps) {
   return (
     <StyledBox className={classes.root}>
-      <StyledBox className={classes.user}>
-        <Lottie options={avatarOptions} height={'25%'} />
-        <StyledTypography>John Smith</StyledTypography>
+      <StyledBox className={classes.present}>
+        <video preload='auto' autoPlay muted loop style={{ height: '100vh' }}>
+          <source src={'/preview1.mp4'} />
+        </video>
       </StyledBox>
-      <StyledBox className={classes.info_container}>Some info</StyledBox>
     </StyledBox>
   );
 }

@@ -24,6 +24,7 @@
       "~/icons/*": ["src/assets/icons/*"],
       "~/lotties/*": ["src/assets/lotties/*"],
       "~/sounds/*": ["src/assets/sounds/*"],
+      "~/videos/*": ["src/assets/videos/*"],
       "~/store/*": ["src/store/*"],
       "~/constants/*": ["src/constants/*"],
       "~/theme/*": ["src/theme/*"],

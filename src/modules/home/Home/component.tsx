@@ -8,6 +8,8 @@ import ReactPageScroller from 'react-page-scroller';
 import PreviewScreen from '../PreviewScreen';
 import ExperienceScreen from '../ExperienceScreen';
 import ProjectScreen from '../ProjectScreen';
+import ProfileScreen from '../ProfileScreen';
+import Logo from '~/components/Logo';
 
 const PREFIX = 'HomeComponent';
 const classes = {
@@ -49,8 +51,10 @@ function HomeComponent({ currentScreen = 0, setCurrentScreen }: HomeComponentPro
 
   return (
     <Root className={classes.root}>
+      <Logo />
       <ReactPageScroller pageOnChange={handlePageChange} customPageNumber={currentScreen}>
         <PreviewScreen />
+        <ProfileScreen />
         <ExperienceScreen />
         <ProjectScreen />
       </ReactPageScroller>
